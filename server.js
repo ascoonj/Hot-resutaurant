@@ -13,6 +13,8 @@ var PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(express.static("public"));
+
 // Star Wars Characters (DATA)
 // =============================================================
 var waitList = [];
@@ -32,15 +34,15 @@ var reservations = [
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "home.html"));
+  res.sendFile(path.join(__dirname, "/public/home.html"));
 });
 
 app.get("/reserve", function(req, res) {
-  res.sendFile(path.join(__dirname, "reserve.html"));
+  res.sendFile(path.join(__dirname, "/public/reserve.html"));
 });
 
 app.get("/view", function(req, res) {
-  res.sendFile(path.join(__dirname, "view.html"));
+  res.sendFile(path.join(__dirname, "/public/view.html"));
 });
 // Search for Specific Character (or all characters) - provides JSON
 app.get("/api/reservations", function(req, res) {
